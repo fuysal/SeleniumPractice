@@ -47,4 +47,13 @@ public class SeleniumUtils {
             break;
         }
     }
+    public static void verifyIsDisplayed (WebElement element){
+        if (element.isDisplayed()){
+            System.out.println("PASSED");
+            System.out.println(element.getText()+" is visible");
+        }else {
+            System.out.println("FAILED");
+            System.out.println(element.getText()+" is NOT visible");
+        }
+    }
 }
