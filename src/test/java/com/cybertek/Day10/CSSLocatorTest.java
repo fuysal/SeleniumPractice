@@ -6,5 +6,5 @@ public class CSSLocatorTest {
     String button3Locator = "[id^='button_']"; // ^ means start with
     String button4Locator = "[id$='_button'][onclick='button4()']"; //$ means ends with
     String Button5Locator  = "[onclick*='5']"; // * means contains
-    String Button6Locator  = "#disappearing_button"; // # id
+    String Button6Locator  = "#disappearing_button"; // # id    
 }
