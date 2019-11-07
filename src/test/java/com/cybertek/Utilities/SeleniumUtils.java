@@ -1,9 +1,12 @@
 package com.cybertek.Utilities;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.List;
 
 public class SeleniumUtils {
@@ -55,5 +58,23 @@ public class SeleniumUtils {
             System.out.println("FAILED");
             System.out.println(element.getText()+" is NOT visible");
         }
+    }
+    public static  void clickWithWait(WebDriver driver, By by, int attempts){
+        int count = 0;
+        while (count<= attempts) {
+            try {
+                driver.findElement(by).click();
+                break;
+
+
+            } catch (WebDriverException e) {
+                System.out.println(e);
+                System.out.println("Attempts: " + ++count);
+                waitPlease(1);
+
+
+            }
+        }
+
     }
 }
