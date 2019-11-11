@@ -20,14 +20,14 @@ public class ThreadSleepAndImpilicitWaitTests {
         driver = BrowserFactory.getDriver("chrome");
         //can handle NoSuchElementException, within given time frame
         driver.manage().timeouts().implicitlyWait(  10, TimeUnit.SECONDS);
-        driver.get("http://practice.cybertekschool.com/dynamic_loading/2");
+
         driver.manage().window().maximize();
 
     }
 
     @Test
     public void waitTest1(){
-
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/2");
         driver.findElement(By.cssSelector(startButtonLocator)).click();
 //        try {
 //            Thread.sleep(8000);
@@ -37,6 +37,15 @@ public class ThreadSleepAndImpilicitWaitTests {
         String expectedMessage = "Hello World!";
         String  actualMessage = driver.findElement(By.cssSelector(helloWorldLocator)).getText();
 
+        Assert.assertEquals(actualMessage,expectedMessage);
+
+    }
+
+    @Test
+    public void waitTest2(){
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/4");
+        String expectedMessage = "Hello World!";
+        String  actualMessage = driver.findElement(By.cssSelector(helloWorldLocator)).getText();
         Assert.assertEquals(actualMessage,expectedMessage);
 
     }
