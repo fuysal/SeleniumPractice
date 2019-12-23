@@ -26,6 +26,8 @@ public class ActionClassTests {
     String enabledLocator = "#ui-id-3";
     String downloadLocator = "#ui-id-4";
     String pdfLocator ="#ui-id-5";
+    String earthLocator = "droptarget";
+    String moonLocator ="draggable";
 
 
     String firstImageLocator = "(//img)[1]";
@@ -90,12 +92,34 @@ public class ActionClassTests {
         WebElement pdfElement = driver.findElement(By.cssSelector(pdfLocator));
         action.moveToElement(enabledElement).
                 pause(1000).moveToElement(downloadsElement).
-                pause(1000).moveToElement(pdfElement).build().perform();
+                pause(1000).moveToElement(pdfElement).click().build().perform();
+
+        SeleniumUtils.waitPlease(4);
+
+    }
+    @Test
+    public void dragDropTest(){
+
+    driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
+    Actions action = new Actions(driver);
+    WebElement moon = driver.findElement(By.id(moonLocator))    ;
+    WebElement earth = driver.findElement(By.id(earthLocator));
+
+    action.dragAndDrop(moon,earth).perform();
+    String expectedMessage = "You did great!";
+    String actualMessage = earth.getText();
+    Assert.assertEquals(actualMessage,expectedMessage);
+
+        SeleniumUtils.waitPlease(3);
+
+
+
+
 
     }
 
-
     @AfterMethod
+
     public void tearDown(){
         driver.quit();
     }
