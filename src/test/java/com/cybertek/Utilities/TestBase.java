@@ -1,4 +1,4 @@
-package com.cybertek.day14_properties_singleton_driver_test_base;
+package com.cybertek.Utilities;
 
 import com.cybertek.Utilities.ConfigurationReader;
 import com.cybertek.Utilities.Driver;
@@ -10,8 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    WebDriver driver;
-    Actions action;
+    public WebDriver driver;
+    public Actions action;
 
     @BeforeMethod
     public void setup(){
