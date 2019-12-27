@@ -77,4 +77,12 @@ public class SeleniumUtils {
         }
 
     }
+
+    public  static void getTableData(WebDriver driver, Integer tableNumber, Integer rowNumber,Integer columnNumber){
+        String dataLocator = "//table["+tableNumber+"]//tr["+rowNumber+"]//td["+columnNumber+"]";
+        WebElement data = driver.findElement(By.xpath(dataLocator));
+        System.out.println("Requested data: " + data.getText());
+
+    }
+
 }
