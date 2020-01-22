@@ -3,6 +3,7 @@ package com.cybertek.Day9;
 import com.cybertek.Utilities.BrowserFactory;
 import com.cybertek.Utilities.SeleniumUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -20,10 +21,19 @@ public class AbsoluteXpathDemo {
     public void setUp(){
         driver = BrowserFactory.getDriver("chrome");
         driver.manage().window().maximize();
-        driver.get("http://practice.cybertekschool.com/sign_up");
+        driver.get("http://practice.cybertekschool.com");
 
     }
-
+    @Test
+    public void test13(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        SeleniumUtils.waitPlease(3);
+        WebElement footer = driver.findElement(By.xpath("//a[text()='Cybertek School']"));
+       // js.executeScript("window.scrollBy(0,300)");
+        js.executeScript("arguments[0].scrollIntoView(true)",footer);
+        String title = (String) js.executeScript("return document.title");
+        System.out.println(title);
+    }
     @Test
     public void test1(){
 

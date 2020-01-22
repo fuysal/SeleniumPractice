@@ -118,7 +118,7 @@ public class WebTablesTests extends TestBase {
     }
 
     @Test
-    public void testTableHeaders(){
+    public void tableHeadersTest2(){
        getAllHeaders();
 
     }
